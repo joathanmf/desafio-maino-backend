@@ -1,13 +1,16 @@
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 d-flex align-items-center" href="#">
-    <%= image_tag "logo.webp", alt: "Logo", style: "height: 40px; margin-right: 10px;" %>
-  </a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+<header class="navbar navbar-light sticky-top flex-md-nowrap p-0">
+  <%= link_to '#', class: 'navbar-brand px-5 d-flex align-items-center' do %>
+    <%= image_tag "logo.webp", alt: "Logo", style: "height: 40px;" %>
+  <% end %>
+  <%= button_tag type: 'button', class: 'navbar-toggler position-absolute d-md-none collapsed', 
+      data: { bs_toggle: 'collapse', bs_target: '#sidebarMenu' }, aria: {
+        controls: 'sidebarMenu', expanded: 'false', label: 'Toggle navigation'
+      } do %>
     <span class="navbar-toggler-icon"></span>
-  </button>
+  <% end %>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+      <%= link_to 'Sair', '#', class: 'nav-link px-3' %>
     </div>
   </div>
 </header>

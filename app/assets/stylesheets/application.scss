@@ -14,4 +14,121 @@
  *= require_self
  */
 
- @import "bootstrap";
+@import "bootstrap";
+
+$primary-color: #1a73e8;
+$secondary-color: #f1f3f4;
+$header-bg-color: #ffffff;
+$sidebar-bg-color: #ffffff;
+$sidebar-border-color: #e0e0e0;
+$sidebar-text-color: #333;
+$sidebar-hover-bg-color: #f5f5f5;
+$sidebar-active-bg-color: $primary-color;
+$sidebar-active-text-color: #ffffff;
+$main-bg-color: #f7f7f7; // Light gray for differentiation
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $secondary-color;
+}
+
+// Header
+header.navbar {
+  background-color: $header-bg-color;
+  border-bottom: 1px solid $sidebar-border-color;
+}
+
+header .navbar-brand {
+  font-size: 1.5rem;
+  color: $sidebar-text-color;
+}
+
+header .navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+header .nav-link {
+  color: $sidebar-text-color;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+header .navbar-toggler {
+  border: none;
+}
+
+// Sidebar
+#sidebarMenu {
+  background-color: $sidebar-bg-color;
+  color: $sidebar-text-color;
+  min-height: 100vh;
+  border-right: 1px solid $sidebar-border-color;
+  width: 250px;
+  transition: width 0.3s, background-color 0.3s;
+
+  .position-sticky {
+    position: sticky;
+    top: 0;
+  }
+}
+
+// Sidebar Links
+#sidebarMenu .nav-link {
+  color: $sidebar-text-color;
+  font-size: 0.95rem;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    color: $sidebar-text-color;
+    background-color: $sidebar-hover-bg-color;
+    text-decoration: none;
+  }
+
+  &.active {
+    color: $sidebar-active-text-color;
+    background-color: $sidebar-active-bg-color;
+  }
+}
+
+// Icons
+[data-feather] {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  vertical-align: middle;
+  transition: color 0.3s;
+
+  +.nav-link.active & {
+    color: $sidebar-active-text-color;
+  }
+}
+
+// Sidebar Titles
+.sidebar-heading {
+  font-size: 0.85rem;
+  color: #888;
+  padding: 12px 20px;
+  border-bottom: 1px solid $sidebar-border-color;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+ul.nav {
+  padding-left: 0;
+}
+
+ul.nav li.nav-item {
+  margin: 0;
+}
+
+main {
+  background-color: $main-bg-color;
+  padding: 20px;
+  border-radius: 8px;
+}
