@@ -1,2 +1,0 @@
-class Destinatario < ApplicationRecord
-end

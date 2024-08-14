@@ -1,6 +1,8 @@
+# Somente para testes
+
 require 'faker'
 
-emitente = Emitente.create!(
+issuer = Issuer.create!(
   cnpj: Faker::Company.brazilian_company_number,
   x_nome: Faker::Company.name,
   x_fant: Faker::Company.name,
@@ -19,7 +21,7 @@ emitente = Emitente.create!(
   crt: Faker::Number.between(from: 1, to: 3).to_s
 )
 
-destinatario = Destinatario.create!(
+recipient = Recipient.create!(
   cnpj: Faker::Company.brazilian_company_number,
   x_nome: Faker::Company.name,
   x_lgr: Faker::Address.street_name,
@@ -34,12 +36,12 @@ destinatario = Destinatario.create!(
   ind_ie: Faker::Number.between(from: 1, to: 2).to_s
 )
 
-nota = NotaFiscal.create!(
+nfe = Nfe.create!(
   num_serie: Faker::Number.unique.number(digits: 5),
   num_nf: Faker::Number.unique.number(digits: 8),
   dh_emi: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
-  emitente:,
-  destinatario:,
+  issuer:,
+  recipient:,
   v_icms: Faker::Commerce.price(range: 0..100.0),
   v_ipi: Faker::Commerce.price(range: 0..100.0),
   v_pis: Faker::Commerce.price(range: 0..100.0),
@@ -47,13 +49,13 @@ nota = NotaFiscal.create!(
 )
 
 5.times do
-  Produto.create!(
+  Product.create!(
     x_prod: Faker::Commerce.product_name,
     ncm: Faker::Number.unique.number(digits: 8),
     cfop: Faker::Number.number(digits: 4),
     u_com: Faker::Commerce.promotion_code,
     q_com: Faker::Number.decimal(l_digits: 2),
     v_un_com: Faker::Commerce.price(range: 60..100.0),
-    nota_fiscal: nota
+    nfe:
   )
 end

@@ -1,6 +1,6 @@
-class CreateDestinatarios < ActiveRecord::Migration[7.1]
+class CreateRecipients < ActiveRecord::Migration[7.1]
   def change
-    create_table :destinatarios do |t|
+    create_table :recipients do |t|
       t.string :cnpj, null: false
       t.string :x_nome, null: false
       t.string :x_lgr

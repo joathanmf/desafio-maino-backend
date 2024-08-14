@@ -1,2 +1,0 @@
-class Emitente < ApplicationRecord
-end

@@ -1,0 +1,2 @@
+class Issuer < ApplicationRecord
+end

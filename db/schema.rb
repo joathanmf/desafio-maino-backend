@@ -14,24 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_013819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "destinatarios", force: :cascade do |t|
-    t.string "cnpj", null: false
-    t.string "x_nome", null: false
-    t.string "x_lgr"
-    t.string "nro"
-    t.string "x_bairro"
-    t.string "c_mun"
-    t.string "x_mun"
-    t.string "uf"
-    t.string "cep"
-    t.string "c_pais"
-    t.string "x_pais"
-    t.string "ind_ie"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "emitentes", force: :cascade do |t|
+  create_table "issuers", force: :cascade do |t|
     t.string "cnpj", null: false
     t.string "x_nome", null: false
     t.string "x_fant"
@@ -52,33 +35,50 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_013819) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notas_fiscais", force: :cascade do |t|
+  create_table "nfes", force: :cascade do |t|
     t.string "num_serie"
     t.string "num_nf"
     t.datetime "dh_emi"
-    t.bigint "emitente_id", null: false
-    t.bigint "destinatario_id", null: false
     t.decimal "v_icms", precision: 10, scale: 2
     t.decimal "v_ipi", precision: 10, scale: 2
     t.decimal "v_pis", precision: 10, scale: 2
     t.decimal "v_cofins", precision: 10, scale: 2
+    t.bigint "issuer_id", null: false
+    t.bigint "recipient_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["destinatario_id"], name: "index_notas_fiscais_on_destinatario_id"
-    t.index ["emitente_id"], name: "index_notas_fiscais_on_emitente_id"
+    t.index ["issuer_id"], name: "index_nfes_on_issuer_id"
+    t.index ["recipient_id"], name: "index_nfes_on_recipient_id"
   end
 
-  create_table "produtos", force: :cascade do |t|
+  create_table "products", force: :cascade do |t|
     t.string "x_prod"
     t.string "ncm"
     t.string "cfop"
     t.string "u_com"
     t.integer "q_com"
     t.decimal "v_un_com", precision: 10, scale: 2
-    t.bigint "nota_fiscal_id", null: false
+    t.bigint "nfe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["nota_fiscal_id"], name: "index_produtos_on_nota_fiscal_id"
+    t.index ["nfe_id"], name: "index_products_on_nfe_id"
+  end
+
+  create_table "recipients", force: :cascade do |t|
+    t.string "cnpj", null: false
+    t.string "x_nome", null: false
+    t.string "x_lgr"
+    t.string "nro"
+    t.string "x_bairro"
+    t.string "c_mun"
+    t.string "x_mun"
+    t.string "uf"
+    t.string "cep"
+    t.string "c_pais"
+    t.string "x_pais"
+    t.string "ind_ie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,7 +93,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_013819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "notas_fiscais", "destinatarios"
-  add_foreign_key "notas_fiscais", "emitentes"
-  add_foreign_key "produtos", "notas_fiscais", column: "nota_fiscal_id"
+  add_foreign_key "nfes", "issuers"
+  add_foreign_key "nfes", "recipients"
+  add_foreign_key "products", "nfes"
 end

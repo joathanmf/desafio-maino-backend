@@ -1,6 +1,6 @@
-class CreateEmitentes < ActiveRecord::Migration[7.1]
+class CreateIssuers < ActiveRecord::Migration[7.1]
   def change
-    create_table :emitentes do |t|
+    create_table :issuers do |t|
       t.string :cnpj, null: false
       t.string :x_nome, null: false
       t.string :x_fant
