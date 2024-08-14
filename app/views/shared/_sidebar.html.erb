@@ -2,19 +2,19 @@
   <div class="position-sticky pt-3">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <%= link_to '#', class: 'nav-link active', aria: { current: 'page' } do %>
+        <%= link_to root_path, class: "nav-link #{'active' if active_link?(controllers: ['home'], actions: ['index'])}" do %>
           <i class="fas fa-home"></i>
           Início
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to '#', class: 'nav-link' do %>
+        <%= link_to '#', class: "nav-link" do %>
           <i class="fas fa-file"></i>
           Relatórios
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to '#', class: 'nav-link' do %>
+        <%= link_to uploads_path, class: "nav-link #{'active' if active_link?(controllers: ['uploads'], actions: ['index'])}" do %>
           <i class="fas fa-upload"></i>
           Importar dados
         <% end %>

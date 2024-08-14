@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get 'uploads', to: 'uploads#index'
+  post 'uploads', to: 'uploads#create'
 
   root 'home#index'
 

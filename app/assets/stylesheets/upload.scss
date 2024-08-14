@@ -1,0 +1,42 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.upload-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.upload-card .card-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.upload-card .form-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+.upload-card .form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+  padding: 10px;
+}
+
+.upload-card .btn-primary {
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.upload-card .text-center p {
+  color: #888;
+}
