@@ -316,6 +316,7 @@ DEPENDENCIES
   devise (~> 4.9, >= 4.9.4)
   dotenv-rails
   faker
+  i18n (~> 1.14, >= 1.14.5)
   importmap-rails
   jbuilder
   nokogiri (~> 1.16, >= 1.16.7)

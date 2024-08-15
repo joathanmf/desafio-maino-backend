@@ -1,0 +1,65 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      issuer: Emitente
+      recipient: Destinatário
+      nfe: Nota Fiscal Eletrônica
+      product: Produto
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de Senha
+      issuer:
+        cnpj: CNPJ
+        x_nome: Razão Social
+        x_fant: Nome Fantasia
+        x_lgr: Logradouro
+        nro: Número
+        x_cpl: Complemento
+        x_bairro: Bairro
+        c_mun: Código do Município
+        x_mun: Município
+        uf: UF
+        cep: CEP
+        c_pais: Código do País
+        x_pais: País
+        fone: Telefone
+        ie: Inscrição Estadual
+        crt: CRT
+      recipient:
+        cnpj: CNPJ
+        x_nome: Razão Social
+        x_lgr: Logradouro
+        nro: Número
+        x_bairro: Bairro
+        c_mun: Código do Município
+        x_mun: Município
+        uf: UF
+        cep: CEP
+        c_pais: Código do País
+        x_pais: País
+        ind_ie: Indicador da IE
+      nfe:
+        num_serie: Série
+        num_nf: Número da Nota Fiscal
+        dh_emi: Data e Hora de Emissão
+        v_icms: Valor do ICMS
+        v_ipi: Valor do IPI
+        v_pis: Valor do PIS
+        v_cofins: Valor do COFINS
+        v_total: Valor Total
+        v_trib: Valor da Tributação
+        issuer: Emitente
+        recipient: Destinatário
+      products:
+        x_prod: Descrição
+        ncm: NCM
+        cfop: CFOP
+        u_com: Unidade Comercializada
+        q_com: Quantidade Comercializada
+        v_un_com: Valor Unitário
+        nfe: Nota Fiscal Eletrônica
+      
