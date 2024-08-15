@@ -4,13 +4,14 @@ class NfeProcessorService
   end
 
   def call
-    puts "Processing NFE file: #{@file_path}"
     doc = Nokogiri::XML(File.read(@file_path))
 
     issuer_data = extract_issuer_data(doc)
     recipient_data = extract_recipient_data(doc)
     nfe_data = extract_nfe_data(doc)
     product_data = extract_product_data(doc)
+
+    [issuer_data, recipient_data, nfe_data, product_data]
   end
 
   private
@@ -45,7 +46,7 @@ class NfeProcessorService
 
     {
       cnpj: recipient_data.xpath('xmlns:CNPJ').text,
-      x_nom: recipient_data.xpath('xmlns:xNome').text,
+      x_nome: recipient_data.xpath('xmlns:xNome').text,
       x_lgr: address_data.xpath('xmlns:xLgr').text,
       nro: address_data.xpath('xmlns:nro').text,
       x_bairro: address_data.xpath('xmlns:xBairro').text,
