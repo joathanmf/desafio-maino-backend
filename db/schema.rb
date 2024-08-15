@@ -43,6 +43,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_013819) do
     t.decimal "v_ipi", precision: 10, scale: 2
     t.decimal "v_pis", precision: 10, scale: 2
     t.decimal "v_cofins", precision: 10, scale: 2
+    t.decimal "v_total", precision: 10, scale: 2
+    t.decimal "v_trib", precision: 10, scale: 2
     t.bigint "issuer_id", null: false
     t.bigint "recipient_id", null: false
     t.datetime "created_at", null: false
