@@ -4,19 +4,19 @@
       <li class="nav-item">
         <%= link_to root_path, class: "nav-link #{'active' if active_link?(controllers: ['home'], actions: ['index'])}" do %>
           <i class="fas fa-home"></i>
-          Início
+          <%= t('buttons.home') %>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to '#', class: "nav-link" do %>
           <i class="fas fa-file"></i>
-          Relatórios
+          <%= t('buttons.report') %>
         <% end %>
       </li>
       <li class="nav-item">
         <%= link_to uploads_path, class: "nav-link #{'active' if active_link?(controllers: ['uploads'], actions: ['index'])}" do %>
           <i class="fas fa-upload"></i>
-          Importar dados
+          <%= t('buttons.upload') %>
         <% end %>
       </li>
     </ul>

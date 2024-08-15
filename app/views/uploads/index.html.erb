@@ -3,23 +3,16 @@
     <div class="col-lg-6 col-md-8 col-sm-10">
       <div class="upload-card card shadow-sm">
         <div class="card-body">
-          <h2 class="card-title text-center mb-4">Upload de Arquivo XML</h2>
+          <h2 class="card-title text-center mb-4"><%= t('infos.upload') %></h2>
           <%= form_with url: uploads_path, local: true, html: { multipart: true, id: 'upload-form' } do |form| %>
             <div class="mb-3">
-              <%= form.label :file, "Escolha o arquivo XML", class: "form-label" %>
+              <%= form.label :file, t('infos.file'), class: "form-label" %>
               <%= form.file_field :file, class: "form-control", id: 'file-input' %>
             </div>
             <div class="mb-3">
-              <%= form.submit "Fazer Upload", class: "btn btn-primary w-100", id: 'upload-button' %>
+              <%= form.submit t('buttons.submit'), class: "btn btn-primary w-100", id: 'upload-button' %>
             </div>
           <% end %>
-          <div id="upload-status" class="text-center mt-3 d-none">
-            <p id="file-name" class="mb-2"></p>
-            <div class="spinner-border text-primary" role="status">
-              <span class="visually-hidden">Carregando...</span>
-            </div>
-            <p id="status-message" class="mt-2"></p>
-          </div>
         </div>
       </div>
     </div>

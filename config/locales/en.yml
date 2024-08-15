@@ -1,2 +1,81 @@
 en:
-  hello: "Hello world"
+  buttons:
+    register: Register
+    enter: Enter
+    home: Home
+    report: Report
+    upload: Upload data
+    submit: Submit
+  links:
+    already_have_account: Already have an account?
+    dont_have_account: Don't have an account?
+    forgot_password: Forgot your password?
+    sign_up: Sign up
+    sign_in: Sign in
+    logout: Logout
+  infos:
+    upload: Upload a file in XML format
+    file: Choose a file to upload
+  activerecord:
+    models:
+      user: User
+      issuer: Issuer
+      recipient: Recipient
+      nfe: NFe
+      product: Product
+    attributes:
+      user:
+        name: Name
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+      issuer:
+        cnpj: CNPJ
+        x_nome: Company Name
+        x_fant: Trade Name
+        x_lgr: Street
+        nro: Number
+        x_cpl: Additional Info
+        x_bairro: Neighborhood
+        c_mun: City Code
+        x_mun: City
+        uf: State
+        cep: Postal Code
+        c_pais: Country Code
+        x_pais: Country
+        fone: Phone
+        ie: State Registration
+        crt: CRT
+      recipient:
+        cnpj: CNPJ
+        x_nome: Company Name
+        x_lgr: Street
+        nro: Number
+        x_bairro: Neighborhood
+        c_mun: City Code
+        x_mun: City
+        uf: State
+        cep: Postal Code
+        c_pais: Country Code
+        x_pais: Country
+        ind_ie: IE Indicator
+      nfe:
+        num_serie: Series
+        num_nf: Invoice Number
+        dh_emi: Issue Date and Time
+        v_icms: ICMS Value
+        v_ipi: IPI Value
+        v_pis: PIS Value
+        v_cofins: COFINS Value
+        v_total: Total Value
+        v_trib: Tax Value
+        issuer: Issuer
+        recipient: Recipient
+      product:
+        x_prod: Description
+        ncm: NCM
+        cfop: CFOP
+        u_com: Unit
+        q_com: Quantity
+        v_un_com: Unit Value
+        nfe: NFe

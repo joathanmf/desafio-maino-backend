@@ -5,21 +5,21 @@
       <div clas="card-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin" }) do |f| %>
           <div class="mb-3">
-            <%= f.label :email, "E-mail", class: "form-label" %>
+            <%= f.label :email, class: "form-label" %>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
           </div>
           <div class="mb-3">
-            <%= f.label :password, "Senha", class: "form-label" %>
+            <%= f.label :password, class: "form-label" %>
             <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
           </div>
           <% if devise_mapping.rememberable? %>
             <div class="form-check mb-2">
               <%= f.check_box :remember_me, class:"form-check-input" %>
-              <%= f.label :remember_me, "Lembre de mim", class:"form-check-label" %>
+              <%= f.label :remember_me, class:"form-check-label" %>
             </div>
           <% end %>
           <div class="d-flex justify-content-end my-4">
-            <%= f.submit "Entrar", class: "btn btn-lg w-100 btn-primary btn-block" %>
+            <%= f.submit t('buttons.enter'), class: "btn btn-lg w-100 btn-primary btn-block" %>
           </div>
           <div class="d-flex flex-column align-items-center gap-1">
             <%= render "devise/shared/links" %>

@@ -1,5 +1,5 @@
 <header class="navbar navbar-light sticky-top flex-md-nowrap p-0">
-  <%= link_to '#', class: 'navbar-brand px-5 d-flex align-items-center' do %>
+  <%= link_to root_path, class: 'navbar-brand px-5 d-flex align-items-center' do %>
     <%= image_tag "logo.webp", alt: "Logo", style: "height: 40px;" %>
   <% end %>
   <%= button_tag type: 'button', class: 'navbar-toggler position-absolute d-md-none collapsed', 
@@ -10,7 +10,7 @@
   <% end %>
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <%= link_to 'Sair', destroy_user_session_path, class: 'nav-link px-3' %>
+      <%= link_to t('links.logout'), destroy_user_session_path, class: 'nav-link px-3' %>
     </div>
   </div>
 </header>

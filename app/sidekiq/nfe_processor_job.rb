@@ -1,6 +1,8 @@
 class NfeProcessorJob
   include Sidekiq::Job
 
+  sidekiq_options retry: false
+
   def perform(file_path)
     issuer_data, recipient_data, nfe_data, product_data = NfeProcessorService.new(file_path).call
 

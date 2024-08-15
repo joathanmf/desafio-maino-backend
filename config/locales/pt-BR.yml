@@ -1,4 +1,21 @@
 pt-BR:
+  buttons:
+    register: Cadastrar
+    enter: Entrar
+    home: Início
+    report: Relatório
+    upload: Importar dados
+    submit: Enviar
+  links:
+    already_have_account: Já tem uma conta?
+    dont_have_account: Não tem uma conta?
+    forgot_password: Esqueceu sua senha?
+    sign_up: Cadastre-se
+    sign_in: Entrar
+    logout: Sair
+  infos:
+    upload: Importe um arquivo no formato XML
+    file: Escolha um arquivo para importar
   activerecord:
     models:
       user: Usuário
@@ -12,6 +29,7 @@ pt-BR:
         email: Email
         password: Senha
         password_confirmation: Confirmação de Senha
+        remember_me: Lembrar de mim
       issuer:
         cnpj: CNPJ
         x_nome: Razão Social
@@ -54,7 +72,7 @@ pt-BR:
         v_trib: Valor da Tributação
         issuer: Emitente
         recipient: Destinatário
-      products:
+      product:
         x_prod: Descrição
         ncm: NCM
         cfop: CFOP
@@ -62,4 +80,17 @@ pt-BR:
         q_com: Quantidade Comercializada
         v_un_com: Valor Unitário
         nfe: Nota Fiscal Eletrônica
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: não pode ficar em branco
+              taken: já está em uso
+            password:
+              blank: não pode ficar em branco
+              too_short: "é muito curta (mínimo: %{count} caracteres)"
+            password_confirmation:
+              blank: não pode ficar em branco
+              confirmation: não confere com a senha
       
