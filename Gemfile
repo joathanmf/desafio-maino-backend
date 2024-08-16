@@ -53,6 +53,10 @@ gem 'annotate', '~> 3.2'
 
 gem 'i18n', '~> 1.14', '>= 1.14.5'
 
+gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+
+gem 'ransack', '~> 4.2', '>= 4.2.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]

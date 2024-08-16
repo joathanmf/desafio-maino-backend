@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   def index
-    @nfes = Nfe.where(user: current_user).joins(:issuer, :recipient)
+    @query = Nfe.where(user: current_user).joins(:issuer, :recipient).ransack(params[:q])
+    @nfes = @query.result
 
     if params[:cnpj].present?
       @nfes = @nfes.where(issuers: { cnpj: params[:cnpj] }).or(@nfes.where(recipients: { cnpj: params[:cnpj] }))

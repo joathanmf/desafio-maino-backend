@@ -41,4 +41,27 @@ class Nfe < ApplicationRecord
   belongs_to :user
 
   has_many :products
+
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[num_serie num_nf dh_emi v_icms v_ipi v_pis v_cofins v_total v_trib]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[issuer recipient]
+  end
+
+  DECIMAL_FIELDS = %w[
+    v_icms
+    v_ipi
+    v_pis
+    v_cofins
+    v_total
+    v_trib
+  ].freeze
+
+  DECIMAL_FIELDS.each do |field|
+    ransacker field do
+      Arel.sql("to_char(\"nfes\".\"#{field}\", '99999999.99')")
+    end
+  end
 end

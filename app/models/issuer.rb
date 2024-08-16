@@ -23,4 +23,11 @@
 #  updated_at :datetime         not null
 #
 class Issuer < ApplicationRecord
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[cnpj x_nome x_fant x_lgr nro x_cpl x_bairro c_mun x_mun uf cep c_pais x_pais fone ie crt]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
 end

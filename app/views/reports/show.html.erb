@@ -3,9 +3,17 @@
     <div class="card w-100 px-5 py-4">
       <div class="d-flex align-items-center justify-content-between mb-4">
         <h1><%= t('infos.nfe_details_title') %></h1>
-        <%= link_to reports_path, class: "btn btn-secondary" do %>
-          <i class="fas fa-arrow-left"></i> <%= t('buttons.back') %>
-        <% end %>
+        <div>
+          <%= link_to "#", class: "btn btn-success ml-2" do %>
+            <i class="fas fa-file-excel"></i> <%= t('buttons.export_excel') %>
+          <% end %>
+          <%= link_to "#", class: "btn btn-primary ml-2" do %>
+            <i class="fas fa-download"></i> <%= t('buttons.download') %>
+          <% end %>
+          <%= link_to reports_path, class: "btn btn-secondary" do %>
+            <i class="fas fa-arrow-left"></i> <%= t('buttons.back') %>
+          <% end %>
+        </div>
       </div>
       <div>
         <div class="row">

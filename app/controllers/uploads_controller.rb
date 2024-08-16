@@ -2,14 +2,12 @@ class UploadsController < ApplicationController
   def index; end
 
   def create
-    if params[:file].nil?
-      flash[:alert] = 'Por favor, selecione um arquivo.'
-
-      redirect_to uploads_path and return
-    end
+    redirect_to uploads_path, alert: I18n.t('notices.alert.no_file') and return if params[:file].nil?
 
     UploadService.new(params[:file], current_user.id).call
 
-    redirect_to uploads_path
+    redirect_to uploads_path, notice: I18n.t('notices.success.upload')
+  rescue ArgumentError => e
+    redirect_to uploads_path, alert: e.message
   end
 end

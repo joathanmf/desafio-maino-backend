@@ -36,6 +36,49 @@ module ApplicationHelper
     end
   end
 
+  def search_fields
+    fields = %w[
+      issuer_x_nome
+      issuer_cnpj
+      issuer_x_fant
+      issuer_x_lgr
+      issuer_nro
+      issuer_x_cpl
+      issuer_x_bairro
+      issuer_c_mun
+      issuer_x_mun
+      issuer_uf
+      issuer_cep
+      issuer_c_pais
+      issuer_x_pais
+      issuer_fone
+      issuer_ie
+      issuer_crt
+      recipient_x_nome
+      recipient_cnpj
+      recipient_x_lgr
+      recipient_nro
+      recipient_x_bairro
+      recipient_c_mun
+      recipient_x_mun
+      recipient_uf
+      recipient_cep
+      recipient_c_pais
+      recipient_x_pais
+      recipient_ind_ie
+      num_serie
+      num_nf
+      v_icms
+      v_ipi
+      v_pis
+      v_cofins
+      v_total
+      v_trib
+    ]
+
+    "#{fields.join('_or_')}_i_cont"
+  end
+
   private
 
   def valid_old_cnpj?(cnpj)

@@ -9,6 +9,9 @@ pt-BR:
     back: Voltar
     filter: Filtrar
     clear: Limpar
+    search: Buscar
+    export_excel: Exportar Excel
+    download: Baixar XML
   links:
     already_have_account: Já tem uma conta?
     dont_have_account: Não tem uma conta?
@@ -18,9 +21,11 @@ pt-BR:
     logout: Sair
   infos:
     upload: Importe um arquivo no formato XML
-    file: Escolha um arquivo para importar
+    file: Escolha um arquivo para importar (XML ou ZIP)
+    filter_placeholder: Filtrar por Informações da Nota Fiscal Eletrônica
     nfe_index_title: Notas Fiscais Eletrônicas
     nfe_details_title: Detalhes da Nota Fiscal Eletrônica
+    no_results: Nenhum resultado encontrado
     subtitle:
       nfe: Informações da Nota Fiscal Eletrônica
       issuer: Informações do Emitente
@@ -30,6 +35,12 @@ pt-BR:
       cnpj: Filtrar por CNPJ
       x_nome: Filtrar por Razão Social
       x_mun: Filtrar por Município
+  notices:
+    alert:
+      no_file: Por favor, selecione um arquivo
+      invalid_file: Formato de arquivo inválido
+    success:
+      upload: Arquivo(s) importado(s) com sucesso
   activerecord:
     models:
       user: Usuário

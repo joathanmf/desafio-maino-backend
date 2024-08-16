@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
@@ -10,4 +12,5 @@ Rails.application.routes.draw do
   resources :reports, only: %i[index show]
 
   get 'up' => 'rails/health#show', as: :rails_health_check
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
 end

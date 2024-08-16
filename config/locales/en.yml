@@ -9,6 +9,9 @@ en:
     back: Back
     filter: Filter
     clear: Clear
+    search: Search
+    export_excel: Export Excel
+    download: Download XML
   links:
     already_have_account: Already have an account?
     dont_have_account: Don't have an account?
@@ -18,9 +21,11 @@ en:
     logout: Logout
   infos:
     upload: Upload a file in XML format
-    file: Choose a file to upload
+    file: Choose a file to upload (XML or ZIP)
+    filter_placeholder: Filter by NFe Information
     nfe_index_title: NFes
     nfe_details_title: NFe Details
+    no_results: No results found
     subtitle:
       nfe: NFe Information
       issuer: Issuer Information
@@ -30,6 +35,12 @@ en:
       cnpj: Search by CNPJ
       x_nome: Search by Company Name
       x_mun: Search by City
+  notices:
+    alert:
+      no_file: Please select a file
+      invalid_file: Invalid file format
+    success:
+      upload: File uploaded successfully
   activerecord:
     models:
       user: User

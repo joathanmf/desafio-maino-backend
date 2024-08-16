@@ -1,0 +1,12 @@
+<%= search_form_for query, url: url do |f| %>
+  <div class="row">
+    <div class="col">
+      <div class="input-group">
+        <%= f.search_field search_fields,
+                            class: "form-control",
+                            placeholder: t("infos.filter_placeholder") %>
+        <%= f.submit t("buttons.search"), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
