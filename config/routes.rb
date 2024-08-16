@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'uploads', to: 'uploads#index'
   post 'uploads', to: 'uploads#create'
 
+  resources :reports, only: %i[index show]
+
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

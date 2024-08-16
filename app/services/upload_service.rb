@@ -1,6 +1,7 @@
 class UploadService
-  def initialize(uploaded_file)
+  def initialize(uploaded_file, current_user_id)
     @uploaded_file = uploaded_file
+    @current_user_id = current_user_id
   end
 
   def call
@@ -21,6 +22,6 @@ class UploadService
   end
 
   def enqueue_processing_job(temp_file_path)
-    NfeProcessorJob.perform_async(temp_file_path.to_s)
+    NfeProcessorJob.perform_async(temp_file_path.to_s, @current_user_id)
   end
 end

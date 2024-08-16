@@ -6,6 +6,9 @@ pt-BR:
     report: Relatório
     upload: Importar dados
     submit: Enviar
+    back: Voltar
+    filter: Filtrar
+    clear: Limpar
   links:
     already_have_account: Já tem uma conta?
     dont_have_account: Não tem uma conta?
@@ -16,6 +19,17 @@ pt-BR:
   infos:
     upload: Importe um arquivo no formato XML
     file: Escolha um arquivo para importar
+    nfe_index_title: Notas Fiscais Eletrônicas
+    nfe_details_title: Detalhes da Nota Fiscal Eletrônica
+    subtitle:
+      nfe: Informações da Nota Fiscal Eletrônica
+      issuer: Informações do Emitente
+      recipient: Informações do Destinatário
+      products: Informações dos Produtos
+    filter:
+      cnpj: Filtrar por CNPJ
+      x_nome: Filtrar por Razão Social
+      x_mun: Filtrar por Município
   activerecord:
     models:
       user: Usuário
@@ -31,15 +45,15 @@ pt-BR:
         password_confirmation: Confirmação de Senha
         remember_me: Lembrar de mim
       issuer:
-        cnpj: CNPJ
-        x_nome: Razão Social
+        cnpj: CNPJ Emitente
+        x_nome: Razão Social Emitente
         x_fant: Nome Fantasia
         x_lgr: Logradouro
         nro: Número
         x_cpl: Complemento
         x_bairro: Bairro
         c_mun: Código do Município
-        x_mun: Município
+        x_mun: Município Emitente
         uf: UF
         cep: CEP
         c_pais: Código do País
@@ -48,13 +62,13 @@ pt-BR:
         ie: Inscrição Estadual
         crt: CRT
       recipient:
-        cnpj: CNPJ
-        x_nome: Razão Social
+        cnpj: CNPJ Destinatário
+        x_nome: Razão Social Destinatário
         x_lgr: Logradouro
         nro: Número
         x_bairro: Bairro
         c_mun: Código do Município
-        x_mun: Município
+        x_mun: Município Destinatário
         uf: UF
         cep: CEP
         c_pais: Código do País
@@ -62,14 +76,14 @@ pt-BR:
         ind_ie: Indicador da IE
       nfe:
         num_serie: Série
-        num_nf: Número da Nota Fiscal
+        num_nf: Número da NFe
         dh_emi: Data e Hora de Emissão
         v_icms: Valor do ICMS
         v_ipi: Valor do IPI
         v_pis: Valor do PIS
         v_cofins: Valor do COFINS
         v_total: Valor Total
-        v_trib: Valor da Tributação
+        v_trib: Tributação Total
         issuer: Emitente
         recipient: Destinatário
       product:

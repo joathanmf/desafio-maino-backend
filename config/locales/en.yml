@@ -6,6 +6,9 @@ en:
     report: Report
     upload: Upload data
     submit: Submit
+    back: Back
+    filter: Filter
+    clear: Clear
   links:
     already_have_account: Already have an account?
     dont_have_account: Don't have an account?
@@ -16,6 +19,17 @@ en:
   infos:
     upload: Upload a file in XML format
     file: Choose a file to upload
+    nfe_index_title: NFes
+    nfe_details_title: NFe Details
+    subtitle:
+      nfe: NFe Information
+      issuer: Issuer Information
+      recipient: Recipient Information
+      products: Products Information
+    filter:
+      cnpj: Search by CNPJ
+      x_nome: Search by Company Name
+      x_mun: Search by City
   activerecord:
     models:
       user: User
@@ -30,15 +44,15 @@ en:
         password: Password
         password_confirmation: Password Confirmation
       issuer:
-        cnpj: CNPJ
-        x_nome: Company Name
+        cnpj: Issuer CNPJ
+        x_nome: Issuer Company Name
         x_fant: Trade Name
         x_lgr: Street
         nro: Number
         x_cpl: Additional Info
         x_bairro: Neighborhood
         c_mun: City Code
-        x_mun: City
+        x_mun: City of Issuer
         uf: State
         cep: Postal Code
         c_pais: Country Code
@@ -47,13 +61,13 @@ en:
         ie: State Registration
         crt: CRT
       recipient:
-        cnpj: CNPJ
-        x_nome: Company Name
+        cnpj: Recipient CNPJ
+        x_nome: Recipient Company Name
         x_lgr: Street
         nro: Number
         x_bairro: Neighborhood
         c_mun: City Code
-        x_mun: City
+        x_mun: City of Recipient
         uf: State
         cep: Postal Code
         c_pais: Country Code

@@ -1,0 +1,25 @@
+<% if flash&.any? %>
+  <div class="flash-messages-container">
+    <% flash.each do |key, value| %>
+      <% type = key.to_s.gsub('alert', 'danger').gsub('notice', 'success') %>
+      <div class="toast align-items-center text-bg-<%= type %> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            <%= value %>
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<% flash.clear %>
+<script type="text/javascript">
+  document.addEventListener('turbo:load', function() {
+    var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+    var toastList = toastElList.map(function(toastEl) {
+      return new bootstrap.Toast(toastEl, { delay: 3000 });
+    });
+    toastList.forEach(toast => toast.show());
+  });
+</script>

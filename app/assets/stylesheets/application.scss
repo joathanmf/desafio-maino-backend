@@ -56,7 +56,7 @@ header .navbar-toggler {
 #sidebarMenu {
   background-color: $sidebar-bg-color;
   color: $sidebar-text-color;
-  min-height: 100vh;
+  min-height: calc(100vh - 51px);;
   border-right: 1px solid $sidebar-border-color;
   width: 250px;
   transition: width 0.3s, background-color 0.3s;
@@ -123,4 +123,36 @@ main {
   background-color: $main-bg-color;
   padding: 20px;
   border-radius: 8px;
+}
+
+// Flash Messages
+.flash-messages-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  width: auto;
+  max-width: 300px;
+}
+
+.toast {
+  opacity: 0.9;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.toast-body {
+  font-size: 14px;
+  color: #fff;
+}
+
+.btn-close-white {
+  filter: invert(1);
+}
+
+table td {
+  border-bottom-width: 2px !important;
+  border-top-width: 2px !important;
 }

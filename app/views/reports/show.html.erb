@@ -1,0 +1,235 @@
+<div class="row">
+  <div class="container">
+    <div class="card w-100 px-5 py-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1><%= t('infos.nfe_details_title') %></h1>
+        <%= link_to reports_path, class: "btn btn-secondary" do %>
+          <i class="fas fa-arrow-left"></i> <%= t('buttons.back') %>
+        <% end %>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-4"><%= t('infos.subtitle.nfe') %></div>
+          <div class="col-8">
+            <div class="row g-3 align-items-center py-3">
+              <div class="col-8">
+                <%= label_tag :num_nf, t("activerecord.attributes.nfe.num_nf"), class:"form-label" %>
+                <%= text_field_tag :num_nf, @nfe.num_nf, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-4">
+                <%= label_tag :num_serie, t("activerecord.attributes.nfe.num_serie"), class:"form-label" %>
+                <%= text_field_tag :num_serie, @nfe.num_serie, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :v_icms, t("activerecord.attributes.nfe.v_icms"), class:"form-label" %>
+                <%= text_field_tag :v_icms, currency_br(@nfe.v_icms), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :v_ipi, t("activerecord.attributes.nfe.v_ipi"), class:"form-label" %>
+                <%= text_field_tag :v_ipi, currency_br(@nfe.v_ipi), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :v_pis, t("activerecord.attributes.nfe.v_pis"), class:"form-label" %>
+                <%= text_field_tag :v_pis, currency_br(@nfe.v_pis), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :v_cofins, t("activerecord.attributes.nfe.v_cofins"), class:"form-label" %>
+                <%= text_field_tag :v_cofins, currency_br(@nfe.v_cofins), class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :dh_emi, t("activerecord.attributes.nfe.dh_emi"), class:"form-label" %>
+                <%= text_field_tag :dh_emi, @nfe.dh_emi, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :v_trib, t("activerecord.attributes.nfe.v_trib"), class:"form-label" %>
+                <%= text_field_tag :v_trib, currency_br(@nfe.v_trib), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :v_total, t("activerecord.attributes.nfe.v_total"), class:"form-label" %>
+                <%= text_field_tag :v_total, currency_br(@nfe.v_total), class: "form-control", disabled: true %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-4"><%= t('infos.subtitle.issuer') %></div>
+          <div class="col-8">
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_nome, t("activerecord.attributes.issuer.x_nome"), class:"form-label" %>
+                <%= text_field_tag :x_nome, @issuer.x_nome, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col-8">
+                <%= label_tag :x_fant, t("activerecord.attributes.issuer.x_fant"), class:"form-label" %>
+                <%= text_field_tag :x_fant, @issuer.x_fant, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-4">
+                <%= label_tag :cnpj, t("activerecord.attributes.issuer.cnpj"), class:"form-label" %>
+                <%= text_field_tag :cnpj, format_cnpj(@issuer.cnpj), class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_pais, t("activerecord.attributes.issuer.x_pais"), class:"form-label" %>
+                <%= text_field_tag :x_pais, @issuer.x_pais, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :x_mun, t("activerecord.attributes.issuer.x_mun"), class:"form-label" %>
+                <%= text_field_tag :x_mun, @issuer.x_mun, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-2">
+                <%= label_tag :uf, t("activerecord.attributes.issuer.uf"), class:"form-label" %>
+                <%= text_field_tag :uf, @issuer.uf, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_lgr, t("activerecord.attributes.issuer.x_lgr"), class:"form-label" %>
+                <%= text_field_tag :x_lgr, @issuer.x_lgr, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-2">
+                <%= label_tag :nro, t("activerecord.attributes.issuer.nro"), class:"form-label" %>
+                <%= text_field_tag :nro, @issuer.nro, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :x_bairro, t("activerecord.attributes.issuer.x_bairro"), class:"form-label" %>
+                <%= text_field_tag :x_bairro, @issuer.x_bairro, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :c_mun, t("activerecord.attributes.issuer.c_mun"), class:"form-label" %>
+                <%= text_field_tag :c_mun, @issuer.c_mun, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :c_pais, t("activerecord.attributes.issuer.c_pais"), class:"form-label" %>
+                <%= text_field_tag :c_pais, @issuer.c_pais, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :x_cpl, t("activerecord.attributes.issuer.x_cpl"), class:"form-label" %>
+                <%= text_field_tag :x_cpl, @issuer.x_cpl, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :cep, t("activerecord.attributes.issuer.cep"), class:"form-label" %>
+                <%= text_field_tag :cep, format_cep(@issuer.cep), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :fone, t("activerecord.attributes.issuer.fone"), class:"form-label" %>
+                <%= text_field_tag :fone, @issuer.fone, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :ie, t("activerecord.attributes.issuer.ie"), class:"form-label" %>
+                <%= text_field_tag :ie, @issuer.ie, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :crt, t("activerecord.attributes.issuer.crt"), class:"form-label" %>
+                <%= text_field_tag :crt, @issuer.crt, class: "form-control", disabled: true %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-4"><%= t('infos.subtitle.recipient') %></div>
+          <div class="col-8">
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_nome, t("activerecord.attributes.recipient.x_nome"), class:"form-label" %>
+                <%= text_field_tag :x_nome, @recipient.x_nome, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-4">
+                <%= label_tag :cnpj, t("activerecord.attributes.recipient.cnpj"), class:"form-label" %>
+                <%= text_field_tag :cnpj, format_cnpj(@recipient.cnpj), class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_pais, t("activerecord.attributes.recipient.x_pais"), class:"form-label" %>
+                <%= text_field_tag :x_pais, @recipient.x_pais, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :x_mun, t("activerecord.attributes.recipient.x_mun"), class:"form-label" %>
+                <%= text_field_tag :x_mun, @recipient.x_mun, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-2">
+                <%= label_tag :uf, t("activerecord.attributes.recipient.uf"), class:"form-label" %>
+                <%= text_field_tag :uf, @recipient.uf, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :x_lgr, t("activerecord.attributes.recipient.x_lgr"), class:"form-label" %>
+                <%= text_field_tag :x_lgr, @recipient.x_lgr, class: "form-control", disabled: true %>
+              </div>
+              <div class="col-2">
+                <%= label_tag :nro, t("activerecord.attributes.recipient.nro"), class:"form-label" %>
+                <%= text_field_tag :nro, @recipient.nro, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :x_bairro, t("activerecord.attributes.recipient.x_bairro"), class:"form-label" %>
+                <%= text_field_tag :x_bairro, @recipient.x_bairro, class: "form-control", disabled: true %>
+              </div>
+            </div>
+            <div class="row g-3 align-items-center py-3">
+              <div class="col">
+                <%= label_tag :c_mun, t("activerecord.attributes.recipient.c_mun"), class:"form-label" %>
+                <%= text_field_tag :c_mun, @recipient.c_mun, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :c_pais, t("activerecord.attributes.recipient.c_pais"), class:"form-label" %>
+                <%= text_field_tag :c_pais, @recipient.c_pais, class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :cep, t("activerecord.attributes.recipient.cep"), class:"form-label" %>
+                <%= text_field_tag :cep, format_cep(@recipient.cep), class: "form-control", disabled: true %>
+              </div>
+              <div class="col">
+                <%= label_tag :ind_ie, t("activerecord.attributes.recipient.ind_ie"), class:"form-label" %>
+                <%= text_field_tag :ind_ie, @recipient.ind_ie, class: "form-control", disabled: true %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="">
+          <div class="pb-4"><%= t('infos.subtitle.products') %></div>
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col"><%= t("activerecord.attributes.product.ncm") %></th>
+                  <th scope="col"><%= t("activerecord.attributes.product.x_prod") %></th>
+                  <th scope="col"><%= t("activerecord.attributes.product.cfop") %></th>
+                  <th scope="col"><%= t("activerecord.attributes.product.u_com") %></th>
+                  <th scope="col"><%= t("activerecord.attributes.product.q_com") %></th>
+                  <th scope="col"><%= t("activerecord.attributes.product.v_un_com") %></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @nfe.products.each do |product| %>
+                  <tr>
+                    <td><%= product.ncm %></td>
+                    <td><%= product.x_prod %></td>
+                    <td><%= product.cfop %></td>
+                    <td><%= product.u_com %></td>
+                    <td><%= product.q_com %></td>
+                    <td><%= currency_br(product.v_un_com) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
