@@ -4,3 +4,7 @@ import "controllers";
 import "popper";
 import "bootstrap";
 import "@fortawesome/fontawesome-free";
+import "@rails/request.js";
+import Swal from "sweetalert2";
+
+window.Swal = Swal;

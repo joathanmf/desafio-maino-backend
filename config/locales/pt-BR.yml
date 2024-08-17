@@ -13,6 +13,7 @@ pt-BR:
     export_excel: Exportar Excel
     download: Baixar XML
     new_nfe: Nova Nota Fiscal
+    delete: Excluir
   links:
     already_have_account: Já tem uma conta?
     dont_have_account: Não tem uma conta?

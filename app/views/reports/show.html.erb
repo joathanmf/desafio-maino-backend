@@ -7,8 +7,21 @@
           <%= link_to "#", class: "btn btn-success ml-2" do %>
             <i class="fas fa-file-excel"></i> <%= t('buttons.export_excel') %>
           <% end %>
-          <%= link_to "#", class: "btn btn-primary ml-2" do %>
+          <%= link_to xml_download_report_path(@nfe), class: "btn btn-primary ml-2" do %>
             <i class="fas fa-download"></i> <%= t('buttons.download') %>
+          <% end %>
+          <%= link_to 'javascript:void(0)',
+                    class: "btn btn-danger",
+                    remote: true,
+                    data: {
+                      'destroy-target': 'link',
+                      controller: "destroy",
+                      name: @nfe.num_nf,
+                      redirect: reports_path,
+                      destroy_path: report_path(@nfe),
+                      record_id: @nfe&.id,
+                      action: "destroy#click", } do %>
+            <i class="fas fa-trash"></i> <%= t("buttons.delete") %>
           <% end %>
           <%= link_to reports_path, class: "btn btn-secondary" do %>
             <i class="fas fa-arrow-left"></i> <%= t('buttons.back') %>

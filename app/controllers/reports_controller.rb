@@ -25,4 +25,22 @@ class ReportsController < ApplicationController
     @issuer = @nfe.issuer
     @recipient = @nfe.recipient
   end
+
+  def destroy
+    nfe = Nfe.find_by(id: params[:id])
+
+    nfe.destroy
+  end
+
+  def xml_download
+    nfe = Nfe.find_by(id: params[:id])
+
+    flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
+
+    send_data(
+      nfe.xml.download,
+      filename: "NFe_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.xml",
+      type: nfe.xml.content_type
+    )
+  end
 end

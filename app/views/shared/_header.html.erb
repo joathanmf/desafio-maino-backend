@@ -6,6 +6,8 @@
     <%= button_to change_locale_path, method: :patch, params: { locale: session[:locale] == 'pt-BR' ? 'en' : 'pt-BR' }, class: 'btn btn-outline-primary ms-2' do %>
       <%= session[:locale] == 'pt-BR' ? 'English' : 'Português' %>
     <% end %>
-    <%= link_to t('links.logout'), destroy_user_session_path, method: :delete, class: 'nav-link px-3' %>
+    <%= form_for :logout, url: destroy_user_session_path, method: :delete, html: { class: 'nav-link px-3' } do %>
+      <%= submit_tag t('links.logout'), class: 'btn btn-outline-secondary' %>
+    <% end %>
   </div>
 </header>

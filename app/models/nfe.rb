@@ -40,7 +40,9 @@ class Nfe < ApplicationRecord
 
   belongs_to :user
 
-  has_many :products
+  has_many :products, dependent: :destroy
+
+  after_destroy :destroy_dependents
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[num_serie num_nf dh_emi v_icms v_ipi v_pis v_cofins v_total v_trib]
@@ -63,5 +65,12 @@ class Nfe < ApplicationRecord
     ransacker field do
       Arel.sql("to_char(\"nfes\".\"#{field}\", '99999999.99')")
     end
+  end
+
+  private
+
+  def destroy_dependents
+    issuer.destroy
+    recipient.destroy
   end
 end

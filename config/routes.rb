@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   get 'uploads', to: 'uploads#index'
   post 'uploads', to: 'uploads#create'
 
-  resources :reports, only: %i[index show]
+  resources :reports, only: %i[index show destroy] do
+    member do
+      get 'xml_download'
+    end
+  end
 
   patch 'change_locale', to: 'application#change_locale'
 
