@@ -3,10 +3,7 @@
     <div class="d-flex align-items-center justify-content-between flex-row">
       <h1><%= t('infos.nfe_index_title') %></h1>
       <div>
-        <%= link_to "#", class: "btn btn-success ml-2" do %>
-          <i class="fas fa-file-excel"></i> <%= t('buttons.export_excel') %>
-        <% end %>
-        <%= link_to uploads_path, class: "btn btn-primary ml-2" do %>
+        <%= link_to uploads_path, class: "btn btn-success ml-2" do %>
           <i class="fas fa-plus"></i> <%= t('buttons.new_nfe') %>
         <% end %>
       </div>

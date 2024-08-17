@@ -12,7 +12,7 @@ pt-BR:
     search: Buscar
     export_excel: Exportar Excel
     download: Baixar XML
-    new_nfe: Nova Nota Fiscal
+    new_nfe: Importar NFe
     delete: Excluir
   links:
     already_have_account: Já tem uma conta?
