@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  # Função que
+  include Pagy::Frontend
+
   def active_link?(controllers:, actions:)
     current_controller = controller_name
     current_action = action_name

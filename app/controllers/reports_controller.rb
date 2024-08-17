@@ -1,23 +1,20 @@
 class ReportsController < ApplicationController
   def index
     @query = Nfe.where(user: current_user).joins(:issuer, :recipient).ransack(params[:q])
-    @nfes = @query.result
 
-    if params[:cnpj].present?
-      @nfes = @nfes.where(issuers: { cnpj: params[:cnpj] }).or(@nfes.where(recipients: { cnpj: params[:cnpj] }))
-    end
+    # Aplicando condições de filtro com base nos parâmetros
+    @nfes = if params[:cnpj].present? || params[:x_nome].present? || params[:x_mun].present?
+              apply_filters(@query.result, params)
+            else
+              @query.result
+            end
 
-    if params[:x_nome].present?
-      @nfes = @nfes.where(issuers: { x_nome: params[:x_nome] }).or(@nfes.where(recipients: { x_nome: params[:x_nome] }))
-    end
+    @pagy, @nfes = pagy(@nfes)
 
-    if params[:x_mun].present?
-      @nfes = @nfes.where(issuers: { x_mun: params[:x_mun] }).or(@nfes.where(recipients: { x_mun: params[:x_mun] }))
-    end
-
-    @cnpjs = Issuer.distinct.pluck(:cnpj) + Recipient.distinct.pluck(:cnpj)
-    @x_nomes = Issuer.distinct.pluck(:x_nome) + Recipient.distinct.pluck(:x_nome)
-    @x_muns = Issuer.distinct.pluck(:x_mun) + Recipient.distinct.pluck(:x_mun)
+    # Coletando valores únicos para os filtros
+    @cnpjs = (Issuer.distinct.pluck(:cnpj) + Recipient.distinct.pluck(:cnpj)).uniq
+    @x_nomes = (Issuer.distinct.pluck(:x_nome) + Recipient.distinct.pluck(:x_nome)).uniq
+    @x_muns = (Issuer.distinct.pluck(:x_mun) + Recipient.distinct.pluck(:x_mun)).uniq
   end
 
   def show
@@ -42,5 +39,31 @@ class ReportsController < ApplicationController
       filename: "NFe_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.xml",
       type: nfe.xml.content_type
     )
+  end
+
+  private
+
+  def apply_filters(query, params)
+    conditions = []
+    values = {}
+
+    if params[:cnpj].present?
+      conditions << '(issuers.cnpj = :cnpj OR recipients.cnpj = :cnpj)'
+      values[:cnpj] = params[:cnpj]
+    end
+
+    if params[:x_nome].present?
+      conditions << '(issuers.x_nome = :x_nome OR recipients.x_nome = :x_nome)'
+      values[:x_nome] = params[:x_nome]
+    end
+
+    if params[:x_mun].present?
+      conditions << '(issuers.x_mun = :x_mun OR recipients.x_mun = :x_mun)'
+      values[:x_mun] = params[:x_mun]
+    end
+
+    query = query.where(conditions.join(' AND '), values) if conditions.any?
+
+    query
   end
 end
