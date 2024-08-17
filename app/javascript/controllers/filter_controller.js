@@ -41,18 +41,6 @@ export default class extends Controller {
       params.delete(select.name);
     });
 
-    window.history.replaceState(
-      {},
-      "",
-      `${window.location.pathname}?${params.toString()}`
-    );
-
-    this.fetchFilteredResults(params);
-  }
-
-  fetchFilteredResults(params) {
-    const url = `${window.location.pathname}?${params.toString()}`;
-
-    Turbo.visit(url, { action: "replace" });
+    Turbo.visit(window.location.pathname, { action: "replace" });
   }
 }
