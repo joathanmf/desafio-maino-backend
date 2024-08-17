@@ -1,16 +1,11 @@
-<header class="navbar navbar-light sticky-top flex-md-nowrap p-0">
-  <%= link_to root_path, class: 'navbar-brand px-5 d-flex align-items-center' do %>
+<header class="navbar navbar-light sticky-top d-flex justify-content-between align-items-center">
+  <%= link_to root_path, class: 'px-3' do %>
     <%= image_tag "logo.webp", alt: "Logo", style: "height: 40px;" %>
   <% end %>
-  <%= button_tag type: 'button', class: 'navbar-toggler position-absolute d-md-none collapsed', 
-      data: { bs_toggle: 'collapse', bs_target: '#sidebarMenu' }, aria: {
-        controls: 'sidebarMenu', expanded: 'false', label: 'Toggle navigation'
-      } do %>
-    <span class="navbar-toggler-icon"></span>
-  <% end %>
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <%= link_to t('links.logout'), destroy_user_session_path, class: 'nav-link px-3' %>
-    </div>
+  <div class="d-flex align-items-center">
+    <%= button_to change_locale_path, method: :patch, params: { locale: session[:locale] == 'pt-BR' ? 'en' : 'pt-BR' }, class: 'btn btn-outline-primary ms-2' do %>
+      <%= session[:locale] == 'pt-BR' ? 'English' : 'Português' %>
+    <% end %>
+    <%= link_to t('links.logout'), destroy_user_session_path, method: :delete, class: 'nav-link px-3' %>
   </div>
 </header>

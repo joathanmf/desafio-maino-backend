@@ -1,20 +1,21 @@
-<div class="container-fluid">
-  <div class="row justify-content-center align-items-center min-vh-100">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-      <div class="upload-card card shadow-sm">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4"><%= t('infos.upload') %></h2>
-          <%= form_with url: uploads_path, local: true, html: { multipart: true, id: 'upload-form' } do |form| %>
-            <div class="mb-3">
-              <%= form.label :file, t('infos.file'), class: "form-label" %>
-              <%= form.file_field :file, class: "form-control", id: 'file-input' %>
-            </div>
-            <div class="mb-3">
-              <%= form.submit t('buttons.submit'), class: "btn btn-primary w-100", id: 'upload-button' %>
-            </div>
-          <% end %>
+<div class="row justify-content-center align-items-center">
+  <div class="upload-card card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4"><%= t('infos.upload') %></h2>
+      <%= form_with url: uploads_path, local: true, html: { multipart: true, id: 'upload-form' } do |form| %>
+        <div class="mb-3">
+          <%= form.label :file, t('infos.file'), class: "form-label" %>
+          <%= form.file_field :file, class: "form-control", id: 'file-input' %>
         </div>
-      </div>
+        <div class="mb-3 d-flex justify-content-between">
+          <%= link_to reports_path, class: "btn btn-secondary d-flex align-items-center justify-content-between gap-2" do %>
+            <i class="fas fa-arrow-left"></i> <%= t('buttons.back') %>
+          <% end %>
+          <button type="submit" id="upload-button" class="btn btn-primary d-flex align-items-center justify-content-between gap-2">
+            <i class="fa-solid fa-arrow-up"></i> <%= t('buttons.submit') %>
+          </button>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

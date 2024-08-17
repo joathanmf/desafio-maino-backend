@@ -13,11 +13,8 @@
     <div class="container-fluid">
       <div class="row">
         <%= render "shared/header" %>
-        <div style="display: grid; grid-template-columns: 225px calc(100% - 225px);">
-        <%= render "shared/sidebar" %>
-        <main class="col">
+        <div class="container py-3 px-3">
           <%= yield %>
-        </main>
         </div>
       </div>
     </div>

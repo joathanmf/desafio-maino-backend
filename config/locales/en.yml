@@ -12,6 +12,7 @@ en:
     search: Search
     export_excel: Export Excel
     download: Download XML
+    new_nfe: New NFe
   links:
     already_have_account: Already have an account?
     dont_have_account: Don't have an account?
@@ -20,8 +21,8 @@ en:
     sign_in: Sign in
     logout: Logout
   infos:
-    upload: Upload a file in XML format
-    file: Choose a file to upload (XML or ZIP)
+    upload: Import the NFe
+    file: Import the NFe in XML or ZIP format
     filter_placeholder: Filter by NFe Information
     nfe_index_title: NFes
     nfe_details_title: NFe Details

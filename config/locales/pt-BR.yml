@@ -12,6 +12,7 @@ pt-BR:
     search: Buscar
     export_excel: Exportar Excel
     download: Baixar XML
+    new_nfe: Nova Nota Fiscal
   links:
     already_have_account: Já tem uma conta?
     dont_have_account: Não tem uma conta?
@@ -20,8 +21,8 @@ pt-BR:
     sign_in: Entrar
     logout: Sair
   infos:
-    upload: Importe um arquivo no formato XML
-    file: Escolha um arquivo para importar (XML ou ZIP)
+    upload: Importe a Nota Fiscal Eletrônica
+    file: Faça a importação da NFe no formato XML ou ZIP
     filter_placeholder: Filtrar por Informações da Nota Fiscal Eletrônica
     nfe_index_title: Notas Fiscais Eletrônicas
     nfe_details_title: Detalhes da Nota Fiscal Eletrônica
@@ -118,4 +119,3 @@ pt-BR:
             password_confirmation:
               blank: não pode ficar em branco
               confirmation: não confere com a senha
-      

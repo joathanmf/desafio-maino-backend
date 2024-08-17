@@ -1,94 +1,102 @@
-<div class="row">
-  <div class="container">
-    <div class="card w-100 px-5 py-4">
-      <div data-controller="filter">
-        <h1><%= t('infos.nfe_index_title') %></h1>
-        <div class="row pt-2 pb-3 text-center">
-          <%= render 'search_form', url: reports_path, query: @query %>
-          <%= form_with url: reports_path, method: :get, local: true, class: "row" do %>
-            <div class="col">
-              <select class="form-select" id="cnpj" name="cnpj" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
-                <option value=""><%= t('infos.filter.cnpj') %></option>
-                <% @cnpjs.each do |cnpj| %>
-                  <option value="<%= cnpj %>"><%= format_cnpj(cnpj) %></option>
-                <% end %>
-              </select>
-            </div>
-            <div class="col">
-              <select class="form-select" id="x_nome" name="x_nome" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
-                <option value=""><%= t('infos.filter.x_nome') %></option>
-                <% @x_nomes.each do |x_nome| %>
-                  <option value="<%= x_nome %>"><%= x_nome %></option>
-                <% end %>
-              </select>
-            </div>
-            <div class="col">
-              <select class="form-select" id="x_mun" name="x_mun" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
-                <option value=""><%= t('infos.filter.x_mun') %></option>
-                <% @x_muns.each do |x_mun| %>
-                  <option value="<%= x_mun %>"><%= x_mun %></option>
-                <% end %>
-              </select>
-            </div>
-            <div class="col-2">
-              <%= button_tag type: 'submit', class: 'btn btn-primary', id: 'filter' do %>
-                <i class="fas fa-filter"></i> <%= t('buttons.filter') %>
-              <% end %>
-              <%= button_tag type: 'button', class: 'btn btn-secondary', id: 'clear-filters', data: { action: 'filter#clearFilters' } do %>
-                <i class="fas fa-times"></i> <%= t('buttons.clear') %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="table-responsive text-center">
-        <% if @nfes.any? %>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <%# Atributos do nfe %>
-                <th class="text-center" scope="col" style="min-width: 200px;"><%= t("activerecord.attributes.nfe.num_nf") %></th>
-                <th class="text-center" scope="col" style="min-width: 175px;"><%= t("activerecord.attributes.nfe.v_trib") %></th>
-                <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.nfe.v_total") %></th>
-                <%# Atributos do issuer %>
-                <th class="text-center" scope="col"><%= t("activerecord.attributes.issuer.cnpj") %></th>
-                <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.issuer.x_nome") %></th>
-                <th class="text-center" scope="col"><%= t("activerecord.attributes.issuer.x_mun") %></th>
-                <%# Atributos do recipient %>
-                <th class="text-center" scope="col"><%= t("activerecord.attributes.recipient.cnpj") %></th>
-                <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.recipient.x_nome") %></th>
-                <th class="text-center" scope="col"><%= t("activerecord.attributes.recipient.x_mun") %></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @nfes.each do |nfe| %>
-                <tr>
-                  <%# Atributos do nfe %>
-                  <td scope="row"><%= link_to nfe.num_nf, report_path(nfe), class: "fw-bold"%></td>
-                  <td><%= currency_br(nfe.v_trib) %></td>
-                  <td><%= currency_br(nfe.v_total) %></td>
-                  <%# Atributos do issuer %>
-                  <td><%= format_cnpj(nfe.issuer.cnpj) %></td>
-                  <td><%= nfe.issuer.x_nome %></td>
-                  <td><%= nfe.issuer.x_mun %></td>
-                  <%# Atributos do recipient %>
-                  <td><%= format_cnpj(nfe.recipient.cnpj) %></td>
-                  <td><%= nfe.recipient.x_nome %></td>
-                  <td><%= nfe.recipient.x_mun %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        <% else %>
-          <div class="text-center p-3">
-            <h5 class="mb-0 fw-bold">
-              <div>
-                <%= t('infos.no_results') %>
-              </div>
-            </h5>
-          </div>
+<div class="card px-4 py-4 w-100">
+  <div data-controller="filter">
+    <div class="d-flex align-items-center justify-content-between flex-row">
+      <h1><%= t('infos.nfe_index_title') %></h1>
+      <div>
+        <%= link_to "#", class: "btn btn-success ml-2" do %>
+          <i class="fas fa-file-excel"></i> <%= t('buttons.export_excel') %>
+        <% end %>
+        <%= link_to uploads_path, class: "btn btn-primary ml-2" do %>
+          <i class="fas fa-plus"></i> <%= t('buttons.new_nfe') %>
         <% end %>
       </div>
     </div>
+    <div class="row pt-2 pb-3 text-center gap-3">
+      <%= render 'search_form', url: reports_path, query: @query %>
+      <%= form_with url: reports_path, method: :get, local: true, class: "d-flex justify-content-between w-100 gap-4" do %>
+        <div class="row w-100">
+          <div class="col">
+            <select class="form-select" id="cnpj" name="cnpj" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
+              <option value=""><%= t('infos.filter.cnpj') %></option>
+              <% @cnpjs.each do |cnpj| %>
+                <option value="<%= cnpj %>"><%= format_cnpj(cnpj) %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select" id="x_nome" name="x_nome" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
+              <option value=""><%= t('infos.filter.x_nome') %></option>
+              <% @x_nomes.each do |x_nome| %>
+                <option value="<%= x_nome %>"><%= x_nome %></option>
+              <% end %>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select" id="x_mun" name="x_mun" data-filter-target="select" data-action="change->filter#updateUrlWithParams">
+              <option value=""><%= t('infos.filter.x_mun') %></option>
+              <% @x_muns.each do |x_mun| %>
+                <option value="<%= x_mun %>"><%= x_mun %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex gap-3">
+          <%= button_tag type: 'submit', class: 'd-flex btn btn-primary align-items-center gap-2', id: 'filter' do %>
+            <i class="fas fa-filter"></i> <%= t('buttons.filter') %>
+          <% end %>
+          <%= button_tag type: 'button', class: 'd-flex btn btn-secondary align-items-center gap-2', id: 'clear-filters', data: { action: 'filter#clearFilters' } do %>
+            <i class="fas fa-times"></i> <%= t('buttons.clear') %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="table-responsive text-center">
+    <% if @nfes.any? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <%# Atributos do nfe %>
+            <th class="text-center" scope="col" style="min-width: 200px;"><%= t("activerecord.attributes.nfe.num_nf") %></th>
+            <th class="text-center" scope="col" style="min-width: 175px;"><%= t("activerecord.attributes.nfe.v_trib") %></th>
+            <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.nfe.v_total") %></th>
+            <%# Atributos do issuer %>
+            <th class="text-center" scope="col"><%= t("activerecord.attributes.issuer.cnpj") %></th>
+            <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.issuer.x_nome") %></th>
+            <th class="text-center" scope="col"><%= t("activerecord.attributes.issuer.x_mun") %></th>
+            <%# Atributos do recipient %>
+            <th class="text-center" scope="col"><%= t("activerecord.attributes.recipient.cnpj") %></th>
+            <th class="text-center" scope="col" style="min-width: 125px;"><%= t("activerecord.attributes.recipient.x_nome") %></th>
+            <th class="text-center" scope="col"><%= t("activerecord.attributes.recipient.x_mun") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @nfes.each do |nfe| %>
+            <tr>
+              <%# Atributos do nfe %>
+              <td scope="row"><%= link_to nfe.num_nf, report_path(nfe), class: "fw-bold"%></td>
+              <td><%= currency_br(nfe.v_trib) %></td>
+              <td><%= currency_br(nfe.v_total) %></td>
+              <%# Atributos do issuer %>
+              <td><%= format_cnpj(nfe.issuer.cnpj) %></td>
+              <td><%= nfe.issuer.x_nome %></td>
+              <td><%= nfe.issuer.x_mun %></td>
+              <%# Atributos do recipient %>
+              <td><%= format_cnpj(nfe.recipient.cnpj) %></td>
+              <td><%= nfe.recipient.x_nome %></td>
+              <td><%= nfe.recipient.x_mun %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="text-center p-3">
+        <h5 class="mb-0 fw-bold">
+          <div>
+            <%= t('infos.no_results') %>
+          </div>
+        </h5>
+      </div>
+    <% end %>
   </div>
 </div>

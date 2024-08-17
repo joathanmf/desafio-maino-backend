@@ -2,10 +2,14 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :set_locale
 
-  protected
+  def set_locale
+    I18n.locale = session[:locale] || I18n.default_locale
+  end
 
-  def after_sign_in_path_for(_resource)
-    root_path
+  def change_locale
+    session[:locale] = params[:locale] if params[:locale].present?
+    redirect_back fallback_location: root_path
   end
 end
