@@ -59,6 +59,8 @@ gem 'ransack', '~> 4.2', '>= 4.2.1'
 
 gem 'pagy', '~> 9.0', '>= 9.0.5'
 
+gem 'ruby_danfe', '~> 1.15', '>= 1.15.4'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]

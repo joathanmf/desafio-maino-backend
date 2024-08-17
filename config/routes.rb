@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :reports, only: %i[index show destroy] do
     member do
       get 'xml_download'
+      get 'danfe_download'
     end
   end
 

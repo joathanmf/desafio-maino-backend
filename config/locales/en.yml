@@ -11,7 +11,8 @@ en:
     clear: Clear
     search: Search
     export_excel: Export Excel
-    download: Download XML
+    download_xml: Download XML
+    download_danfe: Download DANFE
     new_nfe: New NFe
     delete: Delete
   links:

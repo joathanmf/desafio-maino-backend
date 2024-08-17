@@ -10,8 +10,8 @@ pt-BR:
     filter: Filtrar
     clear: Limpar
     search: Buscar
-    export_excel: Exportar Excel
-    download: Baixar XML
+    download_xml: Exportar XML
+    download_danfe: Exportar DANFE
     new_nfe: Importar NFe
     delete: Excluir
   links:

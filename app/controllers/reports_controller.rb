@@ -41,6 +41,20 @@ class ReportsController < ApplicationController
     )
   end
 
+  def danfe_download
+    nfe = Nfe.find_by(id: params[:id])
+
+    flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
+
+    pdf = RubyDanfe.generatePDF(nfe.xml.download).render
+
+    send_data(
+      pdf,
+      filename: "DANFE_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.pdf",
+      type: 'application/pdf'
+    )
+  end
+
   private
 
   def apply_filters(query, params)
