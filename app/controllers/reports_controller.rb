@@ -39,21 +39,19 @@ class ReportsController < ApplicationController
 
     authorize nfe, policy_class: ReportPolicy
 
-    flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
-
     send_data(
       nfe.xml.download,
       filename: "NFe_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.xml",
       type: nfe.xml.content_type
     )
+  rescue StandardError => e
+    redirect_to report_path(nfe), alert: I18n.t('notices.alert.file_not_found')
   end
 
   def danfe_download
     nfe = Nfe.find(params[:id])
 
     authorize nfe, policy_class: ReportPolicy
-
-    flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
 
     pdf = RubyDanfe.generatePDF(nfe.xml.download).render
 
@@ -62,6 +60,8 @@ class ReportsController < ApplicationController
       filename: "DANFE_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.pdf",
       type: 'application/pdf'
     )
+  rescue StandardError => e
+    redirect_to report_path(nfe), alert: I18n.t('notices.alert.file_not_found')
   end
 
   private

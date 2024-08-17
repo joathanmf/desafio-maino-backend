@@ -44,6 +44,7 @@ en:
       invalid_file: Invalid file format
       access_denied: You are not allowed to access this page
       record_not_found: Record not found
+      file_not_found: File not found
     success:
       upload: File uploaded successfully
   activerecord:

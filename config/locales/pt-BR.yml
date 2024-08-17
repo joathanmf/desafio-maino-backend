@@ -43,6 +43,7 @@ pt-BR:
       invalid_file: Formato de arquivo inválido
       access_denied: Você não tem permissão para acessar esta página
       record_not_found: Registro não encontrado
+      file_not_found: Arquivo não encontrado
     success:
       upload: Arquivo(s) importado(s) com sucesso
   activerecord:

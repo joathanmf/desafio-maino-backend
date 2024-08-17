@@ -63,6 +63,8 @@ gem 'ruby_danfe', '~> 1.15', '>= 1.15.4'
 
 gem 'pundit', '~> 2.3', '>= 2.3.2'
 
+gem 'cloudinary', '~> 2.1', '>= 2.1.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
