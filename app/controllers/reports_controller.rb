@@ -18,19 +18,26 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @nfe = Nfe.find_by(id: params[:id])
+    @nfe = Nfe.find(params[:id])
+
+    authorize @nfe, policy_class: ReportPolicy
+
     @issuer = @nfe.issuer
     @recipient = @nfe.recipient
   end
 
   def destroy
-    nfe = Nfe.find_by(id: params[:id])
+    nfe = Nfe.find(params[:id])
+
+    authorize nfe, policy_class: ReportPolicy
 
     nfe.destroy
   end
 
   def xml_download
-    nfe = Nfe.find_by(id: params[:id])
+    nfe = Nfe.find(params[:id])
+
+    authorize nfe, policy_class: ReportPolicy
 
     flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
 
@@ -42,7 +49,9 @@ class ReportsController < ApplicationController
   end
 
   def danfe_download
-    nfe = Nfe.find_by(id: params[:id])
+    nfe = Nfe.find(params[:id])
+
+    authorize nfe, policy_class: ReportPolicy
 
     flash[:alert] = I18n.t('notices.alert.file_not_found') unless nfe.xml.attached?
 

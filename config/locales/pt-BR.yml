@@ -41,6 +41,8 @@ pt-BR:
     alert:
       no_file: Por favor, selecione um arquivo
       invalid_file: Formato de arquivo inválido
+      access_denied: Você não tem permissão para acessar esta página
+      record_not_found: Registro não encontrado
     success:
       upload: Arquivo(s) importado(s) com sucesso
   activerecord:
