@@ -21,6 +21,8 @@ FROM base as build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
 
+RUN apt-get install nodejs -y && apt install npm -y && npm i -g npm
+
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \
