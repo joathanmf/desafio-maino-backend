@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def set_locale
-    I18n.locale = session[:locale] || I18n.default_locale
+    I18n.locale = session[:locale]&.to_sym || I18n.default_locale
   end
 
   def change_locale
