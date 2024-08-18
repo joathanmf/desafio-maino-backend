@@ -1,24 +1,35 @@
-# README
+# Desafio Backend Jr com Ruby on Rails (Mainô)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Como Rodar o Projeto Localmente
 
-Things you may want to cover:
+Siga os passos abaixo para configurar e rodar o projeto em sua máquina local.
 
-* Ruby version
+### 1. Configurações
 
-* System dependencies
+1. **Configurar credenciais do banco de dados (Postgres) e Redis:**
+   - Crie um arquivo `.env` na raiz do projeto com as configurações necessárias para o banco de dados e Redis.
+   - Utilize o arquivo de exemplo disponível na raiz do projeto (`.env.example`) para facilitar a configuração.
 
-* Configuration
+2. **Instalar dependências:**
+   - Execute o comando abaixo para instalar todas as dependências necessárias:
+     ```bash
+     bundle install
+     ```
 
-* Database creation
+3. **Configurar o banco de dados:**
+   - Execute o seguinte comando para configurar o banco de dados:
+     ```bash
+     rails db:setup
+     ```
 
-* Database initialization
+### 2. Rodando o Servidor
 
-* How to run the test suite
+Para iniciar o servidor local, utilize o comando abaixo:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bin/dev
+```
 
-* Deployment instructions
+Parabéns! A aplicação já está configurada e rodando. Você pode acessá-la através do caminho `http://localhost:5000` (por padrão).
 
-* ...
+Obrigado por utilizar o projeto! Se precisar de mais informações ou tiver dúvidas, não hesite em entrar em contato.
