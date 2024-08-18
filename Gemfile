@@ -53,7 +53,7 @@ gem 'annotate', '~> 3.2'
 
 gem 'i18n', '~> 1.14', '>= 1.14.5'
 
-gem 'rubyzip', '~> 2.3', '>= 2.3.2'
+gem 'rubyzip', '~> 1.3'
 
 gem 'ransack', '~> 4.2', '>= 4.2.1'
 
@@ -66,6 +66,8 @@ gem 'pundit', '~> 2.3', '>= 2.3.2'
 gem 'cloudinary', '~> 2.1', '>= 2.1.1'
 
 gem 'mini_racer', '~> 0.14.1'
+
+gem 'axlsx', '3.0.0.pre'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

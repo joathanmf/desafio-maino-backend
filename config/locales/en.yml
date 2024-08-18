@@ -13,6 +13,7 @@ en:
     export_excel: Export Excel
     download_xml: Download XML
     download_danfe: Download DANFE
+    download_xlsx: Download Excel
     new_nfe: New NFe
     delete: Delete
   links:

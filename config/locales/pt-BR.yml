@@ -12,6 +12,7 @@ pt-BR:
     search: Buscar
     download_xml: Exportar XML
     download_danfe: Exportar DANFE
+    download_xlsx: Exportar Excel
     new_nfe: Importar NFe
     delete: Excluir
   links:

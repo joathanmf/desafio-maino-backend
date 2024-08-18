@@ -2,7 +2,6 @@ class ReportsController < ApplicationController
   def index
     @query = Nfe.where(user: current_user).joins(:issuer, :recipient).ransack(params[:q])
 
-    # Aplicando condições de filtro com base nos parâmetros
     @nfes = if params[:cnpj].present? || params[:x_nome].present? || params[:x_mun].present?
               apply_filters(@query.result, params)
             else
@@ -11,7 +10,6 @@ class ReportsController < ApplicationController
 
     @pagy, @nfes = pagy(@nfes)
 
-    # Coletando valores únicos para os filtros
     @cnpjs = (Issuer.distinct.pluck(:cnpj) + Recipient.distinct.pluck(:cnpj)).uniq
     @x_nomes = (Issuer.distinct.pluck(:x_nome) + Recipient.distinct.pluck(:x_nome)).uniq
     @x_muns = (Issuer.distinct.pluck(:x_mun) + Recipient.distinct.pluck(:x_mun)).uniq
@@ -60,6 +58,21 @@ class ReportsController < ApplicationController
       filename: "DANFE_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.pdf",
       type: 'application/pdf'
     )
+  rescue StandardError => e
+    redirect_to report_path(nfe), alert: I18n.t('notices.alert.file_not_found')
+  end
+
+  def xlsx_download
+    nfe = Nfe.find(params[:id])
+
+    authorize nfe, policy_class: ReportPolicy
+
+    xlsx = XlsxGeneratorService.new(nfe).call
+
+    send_data(
+      xlsx,
+      filename: "NFe_#{nfe.num_nf}_#{nfe.created_at.to_s.gsub(' UTC', '')}.xlsx",
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
   rescue StandardError => e
     redirect_to report_path(nfe), alert: I18n.t('notices.alert.file_not_found')
   end

@@ -22,4 +22,8 @@ class ReportPolicy < ApplicationPolicy
   def danfe_download?
     @user == @record.user
   end
+
+  def xlsx_download?
+    @user == @record.user
+  end
 end

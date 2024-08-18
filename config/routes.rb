@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get 'xml_download'
       get 'danfe_download'
+      get 'xlsx_download'
     end
   end
 
